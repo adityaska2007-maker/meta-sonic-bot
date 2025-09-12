@@ -1,8 +1,12 @@
+import os
+from dotenv import load_dotenv
 import discord
 from discord.ext import commands
 import json
-import os
 import asyncio
+
+# Load .env file
+load_dotenv()
 
 # ----------------------------
 # Load config.json
@@ -10,8 +14,8 @@ import asyncio
 with open("config.json", "r") as f:
     config = json.load(f)
 
-TOKEN = config.get("token")
-PREFIX = config.get("prefix", "?")
+TOKEN = os.getenv("DISCORD_TOKEN")
+PREFIX = config.get("default_prefix", "?")
 intents = discord.Intents.all()
 
 # ----------------------------
