@@ -1,1 +1,9 @@
+# Python cache files
 __pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# Configuration with secrets
+config.json
