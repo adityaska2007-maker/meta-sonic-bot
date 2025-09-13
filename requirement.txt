@@ -1,1 +1,11 @@
+discord
+
+discord.ext.commands
+
+json (built-in)
+
+os (built-in)
+
+asyncio (built-in)
+
 discord.py==2.3.2
