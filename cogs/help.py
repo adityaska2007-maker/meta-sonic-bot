@@ -7,13 +7,13 @@ class HelpView(View):
         super().__init__(timeout=None)
         self.prefix = prefix
 
-        # Add buttons
+        # Buttons in the view
         self.add_item(Button(label="Main Module", style=discord.ButtonStyle.primary, custom_id="main"))
         self.add_item(Button(label="Extra Module", style=discord.ButtonStyle.primary, custom_id="extra"))
+        self.add_item(Button(label="Music Module", style=discord.ButtonStyle.success, custom_id="music"))
         self.add_item(Button(label="Search Command", style=discord.ButtonStyle.secondary, custom_id="search"))
 
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
-        # Allow only the user who ran help to click
         return True
 
     async def on_timeout(self):
@@ -53,8 +53,29 @@ class HelpView(View):
             color=discord.Color.purple()
         )
         embed.add_field(
-            name="🔹 Extra",
+            name="🔹 Extra Features",
             value="🤖 Auto Responder\n🎭 Custom Roles\n📝 Logging\n🎙️ VCRoles\n⭐ Fun\n📦 Bot",
+            inline=False
+        )
+        await interaction.response.edit_message(embed=embed, view=self)
+
+    @discord.ui.button(label="Music Module", style=discord.ButtonStyle.success, custom_id="music_btn")
+    async def music_button(self, interaction: discord.Interaction, button: Button):
+        embed = discord.Embed(
+            title="🎶 META SONIC - Music Module",
+            description=f"Prefix: `{self.prefix}`\nMusic features to play, pause, skip, and manage tracks.",
+            color=discord.Color.green()
+        )
+        embed.add_field(
+            name="🔹 Music Commands",
+            value=(
+                f"`{self.prefix}play <song name or URL>` - Play a song in VC\n"
+                f"`{self.prefix}pause` - Pause the current track\n"
+                f"`{self.prefix}resume` - Resume paused track\n"
+                f"`{self.prefix}skip` - Skip current track\n"
+                f"`{self.prefix}queue` - Show the music queue\n"
+                f"`{self.prefix}stop` - Stop and leave VC"
+            ),
             inline=False
         )
         await interaction.response.edit_message(embed=embed, view=self)
@@ -64,7 +85,7 @@ class HelpView(View):
         embed = discord.Embed(
             title="🔍 META SONIC - Command Search",
             description=f"Use `{self.prefix}help <command>` to see details about a command.\n\nExample:\n`{self.prefix}help ban`",
-            color=discord.Color.green()
+            color=discord.Color.orange()
         )
         await interaction.response.edit_message(embed=embed, view=self)
 
@@ -83,7 +104,7 @@ class HelpCommand(commands.Cog):
             color=discord.Color.blue()
         )
         embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.display_avatar.url)
-        embed.set_thumbnail(url="https://i.ibb.co/vwZt2mR/meta-sonic.png")  # bot logo
+        embed.set_thumbnail(url="https://i.ibb.co/vwZt2mR/meta-sonic.png")  # Your bot logo
 
         embed.add_field(
             name="🔹 Main Modules",
