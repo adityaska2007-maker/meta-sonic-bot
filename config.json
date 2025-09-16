@@ -1,28 +1,11 @@
 {
   "default_prefix": "!ms",
   "log_channel_id": "123456789012345678",
-
-  "spam": {
-    "window": 7,
-    "max_messages": 5
-  },
-
-  "raid": {
-    "window": 10,
-    "max_joins": 4
-  },
-
+  "spam": { "window": 7, "max_messages": 5 },
+  "raid": { "window": 10, "max_joins": 4 },
   "anti_invite": true,
-
-  "trusted_roles": [
-    "111111111111111111"
-  ],
-
-  "trusted_users": [
-    "222222222222222222"
-  ],
-
+  "trusted_roles": ["111111111111111111"],
+  "trusted_users": ["222222222222222222"],
   "antinuke": true,
-
   "nightmode": false
 }
