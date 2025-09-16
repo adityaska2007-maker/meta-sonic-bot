@@ -17,9 +17,12 @@
   "trusted_roles": [
     "111111111111111111"
   ],
+
   "trusted_users": [
     "222222222222222222"
   ],
 
-  "antinuke": true
+  "antinuke": true,
+
+  "nightmode": false
 }
