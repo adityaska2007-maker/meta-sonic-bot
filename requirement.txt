@@ -4,3 +4,7 @@ json (built-in)
 os (built-in)
 asyncio (built-in)
 discord.py==2.3.2
+ffmpeg
+google-api-python-client
+spotipy
+python-dotenv
